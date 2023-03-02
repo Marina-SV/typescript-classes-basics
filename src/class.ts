@@ -34,8 +34,9 @@ const masha = new Player("Masha", 45, "Manya", 34665)
 console.log(masha)
 
 class Teacher {
-    static secret = 12345;
-    protected subject: string = "Math"
+    static secret = 12345; // принадлежит самому классу
+    protected subject: string = "Math" // присваивается экземпляру класса
+    public hasFamily = 'yes' // присваивается экземпляру класса
 
     constructor(public name: string, public age: number) {
     }
@@ -46,21 +47,22 @@ class Teacher {
 }
 
 let teacher = new Teacher("Vasya", 16)
-console.log(teacher)
+console.log(teacher) // name, age, subject, hasFamily
 console.log(teacher.getPass())
 
 // Наследует конструктор родительского класса, нельзя вносить доп. св-ва или меньше свойств
 class Purple extends Teacher {
     name: string = "Masha"
+    // нет явного объявления конструктора
 }
 
-let purple = new Purple("Misha", 56)
-console.log(purple)
+let purple = new Purple("", 56)
+console.log(purple) // name: "Masha"
 
 class Student extends Teacher {
     name: string = "Sasha"
 
-    constructor(age: number) {
+    constructor(name: string, age: number) {
         super(name, age);
     }
 
@@ -70,16 +72,17 @@ class Student extends Teacher {
     }
 }
 
-let student = new Student(23)
+let student = new Student("", 23)
 console.log(student)
 
 // abstract class на прямую не создать экземпляр
-// является interface как должны выглядеть потомки
+// является неким interface как должны выглядеть потомки
 
 abstract class Citizen {
     protected constructor(
         public name: string,
-        public age: number) {}
+        public age: number) {
+    }
 
     greet(): void {
         console.log(this.name)
