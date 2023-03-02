@@ -4,6 +4,7 @@ import "./emun.js";
 import "./objects.js";
 import "./class.js";
 import "./namespace.js";
+import "./generic.js";
 
 
 
